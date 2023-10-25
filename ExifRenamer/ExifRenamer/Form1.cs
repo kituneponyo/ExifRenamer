@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace ExifRenamer
@@ -84,6 +85,7 @@ namespace ExifRenamer
                 }
             }
 
+           
         }
 
         private void addImage(FileInfo fi)
@@ -170,6 +172,8 @@ namespace ExifRenamer
                 return;
             }
 
+            this.listViewExif.Items.Clear();
+
             int renamedCount = 0;
 
             foreach (FileRenameListViewItem item in this.listView1.CheckedItems)
@@ -180,6 +184,8 @@ namespace ExifRenamer
                 }
 
                 //MessageBox.Show(item.Text + " => " + item.FileInfo.DirectoryName + "\\" + item.AfterFileName);
+
+
 
                 File.Move(item.Text, item.FileInfo.DirectoryName + "\\" + item.AfterFileName);
 
@@ -194,7 +200,7 @@ namespace ExifRenamer
 
         private void previewImage(FileRenameListViewItem item)
         {
-            this.pictureBox1.Load(item.Text);
+            this.pictureBox1.Image = this.CreateImage(item.Text);
 
             this.listViewExif.Items.Clear();
 
@@ -209,6 +215,36 @@ namespace ExifRenamer
                 tagItem.SubItems.Add(val);
 
                 this.listViewExif.Items.Add(tagItem);
+            }
+        }
+
+        /// <summary>
+        /// 指定したファイルをロックせずに、System.Drawing.Imageを作成する。
+        /// </summary>
+        /// <param name="filename">作成元のファイルのパス</param>
+        /// <returns>作成したSystem.Drawing.Image。</returns>
+        private System.Drawing.Image CreateImage(string filename)
+        {
+            System.IO.FileStream fs = new System.IO.FileStream(
+                filename,
+                System.IO.FileMode.Open,
+                System.IO.FileAccess.Read);
+            System.Drawing.Image img = System.Drawing.Image.FromStream(fs);
+            fs.Close();
+            return img;
+        }
+
+        private void listView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                foreach (FileRenameListViewItem item in this.listView1.Items)
+                {
+                    if (item.Selected)
+                    {
+                        item.Remove();
+                    }
+                }
             }
         }
     }

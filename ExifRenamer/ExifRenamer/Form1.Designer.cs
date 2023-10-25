@@ -63,9 +63,9 @@
             listView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             listView1.CheckBoxes = true;
             listView1.Columns.AddRange(new ColumnHeader[] { columnHeaderFileName, columnHeaderExifDateTimeOriginal, columnHeaderExifDateTime, columnHeaderAfterName, columnHeaderNotice });
-            listView1.Location = new Point(2, 34);
+            listView1.Location = new Point(2, 30);
             listView1.Name = "listView1";
-            listView1.Size = new Size(885, 332);
+            listView1.Size = new Size(885, 293);
             listView1.TabIndex = 0;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -74,6 +74,7 @@
             listView1.SelectedIndexChanged += listView1_SelectedIndexChanged;
             listView1.DragDrop += listView1_DragDrop;
             listView1.DragEnter += listView1_DragEnter;
+            listView1.KeyDown += listView1_KeyDown;
             // 
             // columnHeaderFileName
             // 
@@ -103,9 +104,9 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(2, 6);
+            label1.Location = new Point(2, 5);
             label1.Name = "label1";
-            label1.Size = new Size(60, 17);
+            label1.Size = new Size(54, 15);
             label1.TabIndex = 1;
             label1.Text = "フォルダ：";
             // 
@@ -113,14 +114,14 @@
             // 
             textBoxDirPath.Location = new Point(68, 3);
             textBoxDirPath.Name = "textBoxDirPath";
-            textBoxDirPath.Size = new Size(482, 25);
+            textBoxDirPath.Size = new Size(482, 23);
             textBoxDirPath.TabIndex = 2;
             // 
             // buttonGetFiles
             // 
             buttonGetFiles.Location = new Point(556, 3);
             buttonGetFiles.Name = "buttonGetFiles";
-            buttonGetFiles.Size = new Size(119, 25);
+            buttonGetFiles.Size = new Size(119, 22);
             buttonGetFiles.TabIndex = 3;
             buttonGetFiles.Text = "ファイル一覧取得";
             buttonGetFiles.UseVisualStyleBackColor = true;
@@ -128,9 +129,9 @@
             // 
             // buttonRemoveUnneededItems
             // 
-            buttonRemoveUnneededItems.Location = new Point(3, 372);
+            buttonRemoveUnneededItems.Location = new Point(3, 328);
             buttonRemoveUnneededItems.Name = "buttonRemoveUnneededItems";
-            buttonRemoveUnneededItems.Size = new Size(129, 65);
+            buttonRemoveUnneededItems.Size = new Size(129, 57);
             buttonRemoveUnneededItems.TabIndex = 4;
             buttonRemoveUnneededItems.Text = "リネーム不可・不要をリストから削除";
             buttonRemoveUnneededItems.UseVisualStyleBackColor = true;
@@ -142,16 +143,16 @@
             pictureBox1.Dock = DockStyle.Fill;
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(338, 280);
+            pictureBox1.Size = new Size(338, 246);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
             // 
             // buttonSelectAll
             // 
-            buttonSelectAll.Location = new Point(138, 372);
+            buttonSelectAll.Location = new Point(138, 328);
             buttonSelectAll.Name = "buttonSelectAll";
-            buttonSelectAll.Size = new Size(75, 65);
+            buttonSelectAll.Size = new Size(75, 57);
             buttonSelectAll.TabIndex = 6;
             buttonSelectAll.Text = "全選択";
             buttonSelectAll.UseVisualStyleBackColor = true;
@@ -159,9 +160,9 @@
             // 
             // buttonRename
             // 
-            buttonRename.Location = new Point(219, 372);
+            buttonRename.Location = new Point(219, 328);
             buttonRename.Name = "buttonRename";
-            buttonRename.Size = new Size(108, 65);
+            buttonRename.Size = new Size(108, 57);
             buttonRename.TabIndex = 7;
             buttonRename.Text = "リネーム";
             buttonRename.UseVisualStyleBackColor = true;
@@ -171,7 +172,7 @@
             // 
             splitContainer1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             splitContainer1.BorderStyle = BorderStyle.Fixed3D;
-            splitContainer1.Location = new Point(12, 12);
+            splitContainer1.Location = new Point(12, 11);
             splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -187,7 +188,7 @@
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(splitContainer2);
-            splitContainer1.Size = new Size(1240, 657);
+            splitContainer1.Size = new Size(1240, 580);
             splitContainer1.SplitterDistance = 894;
             splitContainer1.TabIndex = 8;
             // 
@@ -205,8 +206,8 @@
             // splitContainer2.Panel2
             // 
             splitContainer2.Panel2.Controls.Add(listViewExif);
-            splitContainer2.Size = new Size(338, 653);
-            splitContainer2.SplitterDistance = 280;
+            splitContainer2.Size = new Size(338, 576);
+            splitContainer2.SplitterDistance = 246;
             splitContainer2.TabIndex = 6;
             // 
             // listViewExif
@@ -215,7 +216,7 @@
             listViewExif.Dock = DockStyle.Fill;
             listViewExif.Location = new Point(0, 0);
             listViewExif.Name = "listViewExif";
-            listViewExif.Size = new Size(338, 369);
+            listViewExif.Size = new Size(338, 326);
             listViewExif.TabIndex = 0;
             listViewExif.UseCompatibleStateImageBehavior = false;
             listViewExif.View = View.Details;
@@ -232,9 +233,9 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1264, 681);
+            ClientSize = new Size(1264, 601);
             Controls.Add(splitContainer1);
             Name = "Form1";
             Text = "ExifDateRenamer";

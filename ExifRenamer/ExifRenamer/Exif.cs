@@ -11,8 +11,6 @@ namespace ExifRenamer
     {
         public System.Drawing.Imaging.PropertyItem[] Tags { get; }
 
-        //private DateTime? dateTime = null;
-        //private DateTime? dateTimeOriginal = null;
         private string dateTime = "";
         private string dateTimeOriginal = "";
 
@@ -48,6 +46,7 @@ namespace ExifRenamer
             //Debug.WriteLine("{0}: {1}, {2}", imgFile, dateTimeOriginal, dateTime);
 
             bmp.Dispose();
+            bmp = null;
         }
 
         public string DateTime
